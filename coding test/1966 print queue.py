@@ -1,0 +1,22 @@
+from collections import deque
+
+c = int(input())
+
+for _ in range(c):
+    n,m = map(int,input().split())
+    s= list(map(int,input().split()))
+    q=deque()
+    for i,x in enumerate(s):
+        q.append((i,x))
+    s.sort()
+    count=0
+    while q:
+        i,x =q.popleft()
+        if x ==s[-1]:
+            s.pop()
+            count +=1
+            if i == m:
+                print(count)
+                break
+        else:
+           q.append((i,x))
